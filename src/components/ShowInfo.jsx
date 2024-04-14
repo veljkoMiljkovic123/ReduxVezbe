@@ -10,4 +10,4 @@ function ShowInfo() {
   )
 }
 
-export default ShowInfo
+export default ShowInfo  

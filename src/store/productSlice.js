@@ -7,13 +7,16 @@ const productSlice = createSlice({
     initialState:{
         isLoading:false,
         products:[],
-        info:''
+        info:'',
+        singleProduct:{}
     },
     reducers:{
         handleAllProductAction:(state,action)=>{
-            state.info=action.payload;
+            state.info=action.payload  ;
         },
-        handleSingleProductAction:(state,action) =>{}
+        handleSingleProductAction:(state,action) =>{
+            state.singleProduct=action.payload
+        }
     }
 }) 
 

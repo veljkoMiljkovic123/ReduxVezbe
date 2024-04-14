@@ -1,18 +1,34 @@
 import { useDispatch } from "react-redux";
-import { handleAllProductAction } from "./store/productSlice";
+import { handleAllProductAction, handleSingleProductAction } from "./store/productSlice";
 import ShowInfo from "./components/ShowInfo";
-
+import { Outlet } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
 function App() {
   const dispatch = useDispatch()
-  function handleInfo(){
-    dispatch(handleAllProductAction('Tihomir je stigao'))
-  }
+
+  useEffect(()=>{
+    dispatch(handleSingleProductAction({
+      title:'Tihomir',
+      desc:'Bingo redux',
+      price:'$999'
+    }))
+  },[])
 
   return (
     <div className="flex flex-col items-center justify-center mt-8">
       <h1>Redux Toolkit</h1>
-      <button className="px-6 py-3 bg-green-400 rounded-xl" onClick={handleInfo}>Send Info</button>
-      <ShowInfo />
+    <ul className="flex gap-4 font-bold uppercase">
+      <li>
+        <NavLink to={'/'}>Home</NavLink>
+      </li>
+      <li>
+        <NavLink to={'/products'}>Products</NavLink>
+      </li>
+    </ul>
+          
+
+      <Outlet /> 
     </div>
   )
 }
